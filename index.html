@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Primera Página Web</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: #182848;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4b6cb7;
+            margin: 25px 0 15px 0;
+        }
+        
+        h3 {
+            color: #4b6cb7;
+            margin: 20px 0 10px 0;
+        }
+        
+        nav {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 15px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #4b6cb7;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: #4b6cb7;
+            color: white;
+        }
+        
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            flex: 1;
+            min-width: 300px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .code-example {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 5px solid #4b6cb7;
+        }
+        
+        .tag {
+            color: #ff79c6;
+        }
+        
+        .attribute {
+            color: #50fa7b;
+        }
+        
+        .value {
+            color: #f1fa8c;
+        }
+        
+        .comment {
+            color: #6272a4;
+        }
+        
+        footer {
+            background-color: #182848;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+        
+        .highlight {
+            background-color: #eef2ff;
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 5px 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mi Primera Página Web</h1>
+        <p>Un ejemplo básico de código HTML con estructura semántica</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#estructura">Estructura</a></li>
+            <li><a href="#etiquetas">Etiquetas</a></li>
+            <li><a href="#ejemplo">Ejemplo de código</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="inicio">
+            <h2>Introducción a HTML</h2>
+            <p><span class="highlight">HTML</span> (HyperText Markup Language) es el lenguaje estándar para crear páginas web. Describe la estructura de una página web mediante <span class="highlight">etiquetas</span>.</p>
+            
+            <h3>Características principales:</h3>
+            <ul>
+                <li>Define la <strong>estructura</strong> y <strong>contenido</strong> de una página web</li>
+                <li>Utiliza elementos etiquetados como <span class="highlight">&lt;h1&gt;</span>, <span class="highlight">&lt;p&gt;</span>, <span class="highlight">&lt;a&gt;</span>, etc.</li>
+                <li>Se combina con CSS para el estilo y JavaScript para la interactividad</li>
+                <li>Es interpretado por los navegadores web</li>
+            </ul>
+        </section>
+        
+        <section id="estructura">
+            <h2>Estructura Básica HTML</h2>
+            <p>Todos los documentos HTML deben seguir una estructura básica:</p>
+            <ol>
+                <li><strong>&lt;!DOCTYPE html&gt;</strong>: Declara el tipo de documento</li>
+                <li><strong>&lt;html&gt;</strong>: Elemento raíz que contiene todo el documento</li>
+                <li><strong>&lt;head&gt;</strong>: Contiene metainformación como título, codificación y enlaces a recursos</li>
+                <li><strong>&lt;body&gt;</strong>: Contiene el contenido visible de la página</li>
+            </ol>
+            
+            <h3>Elementos semánticos HTML5:</h3>
+            <p>HTML5 introdujo elementos semánticos que describen mejor su contenido:</p>
+            <ul>
+                <li><span class="highlight">&lt;header&gt;</span>: Cabecera de la página o sección</li>
+                <li><span class="highlight">&lt;nav&gt;</span>: Contiene enlaces de navegación</li>
+                <li><span class="highlight">&lt;main&gt;</span>: Contenido principal del documento</li>
+                <li><span class="highlight">&lt;section&gt;</span>: Define una sección en un documento</li>
+                <li><span class="highlight">&lt;footer&gt;</span>: Pie de página o sección</li>
+            </ul>
+        </section>
+        
+        <section id="ejemplo">
+            <h2>Ejemplo de Código HTML Básico</h2>
+            <p>Aquí tienes un ejemplo simple de código HTML que puedes usar como plantilla:</p>
+            
+            <div class="code-example">
+                <span class="comment">&lt;!-- Declaración del tipo de documento --&gt;</span><br>
+                <span class="tag">&lt;!DOCTYPE</span> <span class="attribute">html</span><span class="tag">&gt;</span><br>
+                <span class="tag">&lt;html</span> <span class="attribute">lang</span>=<span class="value">"es"</span><span class="tag">&gt;</span><br>
+                <span class="tag">&lt;head&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;meta</span> <span class="attribute">charset</span>=<span class="value">"UTF-8"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;meta</span> <span class="attribute">name</span>=<span class="value">"viewport"</span> <span class="attribute">content</span>=<span class="value">"width=device-width, initial-scale=1.0"</span><span class="tag">&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;title&gt;</span>Mi página web<span class="tag">&lt;/title&gt;</span><br>
+                <span class="tag">&lt;/head&gt;</span><br>
+                <span class="tag">&lt;body&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;header&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h1&gt;</span>¡Hola Mundo!<span class="tag">&lt;/h1&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>Mi primera página web con HTML<span class="tag">&lt;/p&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/header&gt;</span><br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;main&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;section&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;h2&gt;</span>Bienvenidos<span class="tag">&lt;/h2&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>Este es un ejemplo de página web básica.<span class="tag">&lt;/p&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/section&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/main&gt;</span><br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;footer&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;p&gt;</span>© 2023 Mi Página Web<span class="tag">&lt;/p&gt;</span><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<span class="tag">&lt;/footer&gt;</span><br>
+                <span class="tag">&lt;/body&gt;</span><br>
+                <span class="tag">&lt;/html&gt;</span>
+            </div>
+            
+            <p>Este código incluye todos los elementos esenciales de una página web moderna con HTML5.</p>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2023 Ejemplo de Página HTML Básica. Todos los derechos reservados.</p>
+        <p>Este es un ejemplo educativo para aprender HTML.</p>
+    </footer>
+</body>
+</html>
