@@ -8,9 +8,12 @@ function App() {
 
   return (
     <>
-     <h1>
+      <h1>
         HOla mundo 
-      </h1> 
+      </h1>
+      <button>
+        Pagina Isaac
+      </button> 
     </>
   )
 }
