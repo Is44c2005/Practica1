@@ -11,6 +11,7 @@ import Agujin from "./screens/Agujin";
 
 function App() {
   return (
+
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -23,4 +24,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
