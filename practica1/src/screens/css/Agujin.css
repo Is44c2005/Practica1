@@ -115,3 +115,50 @@ h2 {
   color: #2dd4bf;
   font-family: 'Inter', sans-serif;
 }
+.profile-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.profile-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #2dd4bf;
+  transition: filter 0.3s;
+}
+
+/* Ocultar el input feo y poner un botón encima */
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.btn-upload {
+  border: 2px solid #2dd4bf;
+  color: #2dd4bf;
+  background-color: transparent;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.upload-btn-wrapper:hover .btn-upload {
+  background-color: #2dd4bf;
+  color: #0f172a;
+}
