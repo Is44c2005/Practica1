@@ -3,6 +3,9 @@ import "./css/Mateo.css";
 import fotoPerfil from "../assets/fotos/heidelberg.jpg";
 import foto1 from "../assets/fotos/hamburgo.jpg";
 import foto2 from "../assets/fotos/udla.jpeg";
+import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
+import { db } from "../firebase";
+import { useEffect } from "react";
 
 function Mateo() {
     const postsIniciales = [
@@ -18,12 +21,28 @@ function Mateo() {
       descripcion: "UDLA ",
       likes: 0
     }
-  ];
+  ]; 
 
   const [posts, setPosts] = useState(postsIniciales);
 
   const [postSeleccionado, setPostSeleccionado] = useState<any>(null);
   const [mostrarModal, setMostrarModal] = useState(false);
+
+  useEffect(() => {
+    const obtenerPosts = async () => {
+      const snapshot = await getDocs(collection(db, "posts"));
+
+      const data = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+
+      setPosts(data as any);
+    };
+
+    obtenerPosts();
+  }, []);
+
   return (
     <div className="perfil">
 
@@ -34,6 +53,18 @@ function Mateo() {
         <p>Ing. Software</p>
         <p>UDLA</p>
         <p>2005</p>
+      </div>
+
+      {/* CANCIÓN FAVORITA */}
+      <div className="musica">
+        <h3>🎵 Mi canción favorita</h3>
+
+        <iframe 
+          src="https://www.youtube.com/embed/Th-WfPibwTQ"
+          title="YouTube video player"
+          frameBorder="0"
+          allowFullScreen
+        ></iframe>
       </div>
 
       {/* GALERÍA */}

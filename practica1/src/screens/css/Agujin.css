@@ -5,7 +5,7 @@
   --glass-bg: rgba(255, 255, 255, 0.05);
 }
 
-body {
+.body {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: 'Inter', sans-serif;
@@ -85,7 +85,7 @@ body {
   display: inline-block;
 }
 
-h2 {
+.h2 {
   border-bottom: 2px solid var(--primary-color);
   display: inline-block;
   padding-bottom: 5px;
