@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./css/Mateo.css";
 import foto1 from "../assets/fotos/hamburgo.jpg";
 import foto2 from "../assets/fotos/udla.jpeg";
 import foto3 from "../assets/fotos/heidelberg.jpg";
-import { useEffect} from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import { Link } from "react-router-dom";
 
 function Mateo() {
     const postsIniciales = [
@@ -36,6 +36,13 @@ function Mateo() {
   
   const [perfil, setPerfil] = useState<any>(null);
 
+
+  useEffect(() => {
+    document.body.classList.add("page-mateo");
+    return () => {
+      document.body.classList.remove("page-mateo");
+    };
+  }, []);
 
   useEffect(() => {
     const obtenerPerfil = async () => {
@@ -146,10 +153,19 @@ function Mateo() {
         </div>
       )}
 
+      <footer className="nav-footer-mateo">
+        <Link to="/" className="btn-back-mateo">← Volver al Home</Link>
+        <div className="footer-links-mateo">
+          <span>Ver otros perfiles: </span>
+          <Link to="/isaac">Isaac</Link> | <Link to="/agujin">Agujin</Link>
+        </div>
+      </footer>
+    
+
       
 
     </div>
-  );
+  )
 }
 
 

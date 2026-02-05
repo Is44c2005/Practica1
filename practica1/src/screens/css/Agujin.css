@@ -1,11 +1,11 @@
-:root {
+body.page-agujin {
   --primary-color: #2563eb;
   --bg-color: #0f172a;
   --text-color: #f8fafc;
   --glass-bg: rgba(255, 255, 255, 0.05);
 }
 
-.body {
+body.page-agujin {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: 'Inter', sans-serif;

@@ -13,6 +13,13 @@ const Agujin = () => {
   const docId = "BGQGB3SafoTzzLZrry9U";
 
   useEffect(() => {
+    document.body.classList.add("page-agujin");
+    return () => {
+      document.body.classList.remove("page-agujin");
+    };
+  }, []);
+
+  useEffect(() => {
     const fetchProfile = async () => {
       try {
         const docRef = doc(db, "Agujin", docId);
