@@ -42,6 +42,16 @@ function Home() {
               👉 Ir a Perfil de Agujin
             </Link>
           </li>
+          <li >
+            <Link to = "/login">
+              Ir a Login 
+            </Link>
+          </li>
+          <li>
+            <Link to = "/signup">
+              Ir a Registrarse 
+            </Link>
+          </li>
         </ul>
       </nav>
     </div>

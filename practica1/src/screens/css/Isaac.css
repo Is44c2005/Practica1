@@ -1,14 +1,8 @@
 /* --- Isaac.css COMPLETO --- */
 
 /* Variables para cambiar colores fácil */
-:root {
-  --bg-color: #1a1a1a;
-  --card-bg: #2a2a2a;
-  --text-primary: #ffffff;
-  --text-secondary: #b3b3b3;
-  --accent-color: #61dafb; /* Azul React */
-  --highlight-color: #ffcc00; /* Amarillo para resaltar */
-}
+
+
 
 /* Contenedor principal */
 .portfolio-container {
