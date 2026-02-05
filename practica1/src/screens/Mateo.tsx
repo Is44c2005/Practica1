@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./css/Mateo.css";
-import fotoPerfil from "../assets/fotos/heidelberg.jpg";
 import foto1 from "../assets/fotos/hamburgo.jpg";
 import foto2 from "../assets/fotos/udla.jpeg";
-import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
+import foto3 from "../assets/fotos/heidelberg.jpg";
+import { useEffect} from "react";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import { useEffect } from "react";
 
 function Mateo() {
     const postsIniciales = [
@@ -20,6 +20,12 @@ function Mateo() {
       imagen: foto2,
       descripcion: "UDLA ",
       likes: 0
+    },
+    {
+      id: 3,
+      imagen: foto3,
+      descripcion: "Castillo de Heidelberg, Alemania",
+      likes: 0
     }
   ]; 
 
@@ -27,32 +33,46 @@ function Mateo() {
 
   const [postSeleccionado, setPostSeleccionado] = useState<any>(null);
   const [mostrarModal, setMostrarModal] = useState(false);
+  
+  const [perfil, setPerfil] = useState<any>(null);
+
 
   useEffect(() => {
-    const obtenerPosts = async () => {
-      const snapshot = await getDocs(collection(db, "posts"));
+    const obtenerPerfil = async () => {
+      try {
+        const ref = doc(db, "Mateo", "nf34bTvUqLpmZmESc5fP");
+        const snap = await getDoc(ref);
 
-      const data = snapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-
-      setPosts(data as any);
+        if (snap.exists()) {
+          console.log("DATOS FIREBASE:", snap.data());
+          setPerfil(snap.data());
+        } else {
+          console.log(" El documento NO existe");
+        }
+      } catch (error) {
+        console.error(" Error al traer perfil:", error);
+      }
     };
 
-    obtenerPosts();
+    obtenerPerfil();
   }, []);
+
+  {/* Evitar que react se rompa mientras se carga Firebase */}
+  if (!perfil) {
+  return <p>Cargando perfil...</p>;
+  }
+
 
   return (
     <div className="perfil">
 
       {/* HEADER */}
       <div className="perfil-header">
-        <img src={fotoPerfil} alt="Foto de perfil" className="perfil-foto" />
-        <h2>@mateo.cuevaa</h2>
+        <img src={perfil.foto} alt="Foto de perfil" className="perfil-foto" />
+        <h2>@{perfil.Nombre}</h2>
+        <p>{perfil.Edad} años</p>
         <p>Ing. Software</p>
         <p>UDLA</p>
-        <p>2005</p>
       </div>
 
       {/* CANCIÓN FAVORITA */}
@@ -125,6 +145,8 @@ function Mateo() {
           </div>
         </div>
       )}
+
+      
 
     </div>
   );
