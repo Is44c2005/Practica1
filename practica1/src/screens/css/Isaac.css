@@ -1,6 +1,7 @@
-/* --- Isaac.css COMPLETO --- */
 
-/* Variables para cambiar colores fácil */
+/* =========================================
+   1. VARIABLES Y RESET GENERAL
+   ========================================= */
 :root {
   --bg-color: #1a1a1a;
   --card-bg: #2a2a2a;
@@ -10,31 +11,67 @@
   --highlight-color: #ffcc00; /* Amarillo para resaltar */
 }
 
-/* Contenedor principal */
-.portfolio-container {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Evita scroll horizontal accidental */
+  background-color: var(--bg-color);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* IMPORTANTE: Esto asegura que la aplicación ocupe todo el ancho */
+#root {
+  width: 100%;
+  max-width: 100% !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================
+   2. CONTENEDOR PRINCIPAL (LAYOUT)
+   ========================================= */
+.portfolio-container {
   background-color: var(--bg-color);
   color: var(--text-primary);
   min-height: 100vh;
-  padding: 40px 20px;
+  width: 100%; /* Corregido: 100% es más seguro que 100vw */
+  padding: 40px 20px; /* Espacio interno seguro para móviles */
   text-align: center;
   line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido verticalmente */
 }
 
-/* Hero Section */
+/* =========================================
+   3. PERFIL Y HERO SECTION
+   ========================================= */
+.profile-pic {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent-color);
+  margin: 20px auto;
+  display: block;
+  box-shadow: 0 0 20px rgba(97, 218, 251, 0.4);
+}
+
 .hero {
   margin-bottom: 50px;
   animation: fadeIn 1.5s ease-in;
+  max-width: 800px; /* Limita el ancho del texto para que se lea bien */
+  width: 100%;
 }
 
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 10px;
-}
-
-.highlight {
-  color: var(--accent-color);
-  text-shadow: 0 0 10px rgba(97, 218, 251, 0.3);
 }
 
 .hero-subtitle {
@@ -43,9 +80,17 @@
   font-weight: 300;
 }
 
-/* Secciones generales */
+.highlight {
+  color: var(--accent-color);
+  text-shadow: 0 0 10px rgba(97, 218, 251, 0.3);
+}
+
+/* =========================================
+   4. SECCIONES Y TÍTULOS
+   ========================================= */
 .section {
-  max-width: 800px;
+  width: 100%;
+  max-width: 800px; /* Mantiene el contenido centrado y legible */
   margin: 0 auto 40px auto;
 }
 
@@ -57,19 +102,22 @@
   display: inline-block;
 }
 
-/* Grilla de habilidades (Lo nuevo) */
+/* =========================================
+   5. GRILLA DE HABILIDADES (SKILLS)
+   ========================================= */
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
   max-width: 1000px;
+  width: 100%;
   margin: 0 auto 50px auto;
 }
 
 .tech-skills, .soft-skills {
   flex: 1;
-  min-width: 300px;
+  min-width: 300px; /* Evita que se encojan demasiado en móviles */
   background-color: var(--card-bg);
   padding: 25px;
   border-radius: 15px;
@@ -78,7 +126,7 @@
 }
 
 .tech-skills:hover, .soft-skills:hover {
-  transform: translateY(-5px); /* Efecto de levitar */
+  transform: translateY(-5px);
 }
 
 .skill-list {
@@ -96,11 +144,15 @@
   border-left: 4px solid var(--accent-color);
 }
 
-/* Footer y Botones */
+/* =========================================
+   6. FOOTER Y UI ELEMENTS
+   ========================================= */
 .nav-footer {
   margin-top: 60px;
   padding-top: 20px;
   border-top: 1px solid #333;
+  width: 100%;
+  max-width: 800px;
 }
 
 .footer-links {
@@ -111,12 +163,13 @@
 .footer-links a {
   color: var(--accent-color);
   text-decoration: none;
-  margin: 0 5px;
+  margin: 0 10px;
+  font-weight: 500;
 }
 
 .btn-back {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px 25px;
   background-color: transparent;
   border: 2px solid var(--accent-color);
   color: var(--accent-color);
@@ -124,11 +177,12 @@
   border-radius: 25px;
   font-weight: bold;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .btn-back:hover {
   background-color: var(--accent-color);
-  color: #000;
+  color: #1a1a1a;
 }
 
 .back-to-top {
@@ -136,7 +190,7 @@
   bottom: 30px;
   right: 30px;
   background-color: var(--accent-color);
-  color: #000;
+  color: #1a1a1a;
   border: none;
   padding: 15px;
   border-radius: 50%;
@@ -144,9 +198,124 @@
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   z-index: 1000;
+  transition: transform 0.2s;
 }
 
-/* Animación simple */
+.back-to-top:hover {
+  transform: scale(1.1);
+}
+
+/* ========================
+   ESTILOS DE LA PELÍCULA
+   ======================== */
+.movie-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 50px auto;
+}
+
+.movie-card {
+  display: flex;
+  background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #333;
+  margin-top: 20px;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-color);
+}
+
+.movie-poster-container {
+  flex: 0 0 150px; /* Ancho fijo para el poster */
+}
+
+.movie-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-info {
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.movie-info h4 {
+  color: var(--accent-color);
+  margin: 0 0 5px 0;
+  font-size: 1.5rem;
+}
+
+.movie-tagline {
+  font-style: italic;
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.movie-overview {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 15px;
+  line-height: 1.4;
+}
+
+.movie-meta {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.rating {
+  color: #ffcc00;
+}
+
+.btn-movie {
+  align-self: flex-start;
+  padding: 8px 16px;
+  background-color: rgba(97, 218, 251, 0.1);
+  color: var(--accent-color);
+  text-decoration: none;
+  border: 1px solid var(--accent-color);
+  border-radius: 5px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.btn-movie:hover {
+  background-color: var(--accent-color);
+  color: #1a1a1a;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 600px) {
+  .movie-card {
+    flex-direction: column;
+  }
+  .movie-poster-container {
+    flex: none;
+    height: 200px; /* Altura controlada en móvil */
+  }
+  .movie-poster {
+    object-position: center top;
+  }
+}
+
+/* =========================================
+   7. ANIMACIONES
+   ========================================= */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }

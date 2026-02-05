@@ -1,49 +1,58 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+// Asegúrate de importar el CSS nuevo
+import "./css/Home.css"; 
 
 function Home() {
   const [count, setCount] = useState(0);
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
-      <header style={{ backgroundColor: '#282c34', padding: '20px', color: 'white', borderRadius: '8px' }}>
-        <h1>🚀 ¡Proyecto Funcionando!</h1>
-        <p>Estás en el componente <strong>Home.tsx</strong></p>
+    <div className="home-container">
+      
+      {/* Header Principal */}
+      <header className="main-header">
+        <h1>Zaky Devs</h1>
+        <p className="subtitle">Selecciona un perfil para ver los detalles</p>
       </header>
 
-      <section style={{ margin: '20px 0' }}>
-        <h3>Probando Hooks:</h3>
-        <p>Si haces clic y el número aumenta, React está operando bien:</p>
+      {/* Grid de Navegación (Tarjetas) */}
+      <div className="team-grid">
+        
+        {/* Tarjeta 1: Isaac */}
+        <Link to="/isaac" className="profile-card">
+          <span className="avatar-placeholder">👨‍💻</span>
+          <span className="profile-name">Isaac</span>
+          <span className="profile-role">IA Enthusiast</span>
+        </Link>
+
+        {/* Tarjeta 2: Mateo */}
+        <Link to="/mateo" className="profile-card">
+          <span className="avatar-placeholder">🎨</span>
+          <span className="profile-name">Mateo</span>
+          <span className="profile-role">UI/UX Designer</span>
+        </Link>
+
+        {/* Tarjeta 3: Agujin */}
+        <Link to="/agujin" className="profile-card">
+          <span className="avatar-placeholder">🛡️</span>
+          <span className="profile-name">Agujin</span>
+          <span className="profile-role">Cybersec</span>
+        </Link>
+
+      </div>
+
+      {/* Zona Interactiva */}
+      <section className="interactive-zone">
+        <h3>⚡ Contador de likes</h3>
+        <p>Deja tu like:</p>
         <button 
           onClick={() => setCount(count + 1)}
-          style={{ padding: '10px 20px', fontSize: '16px', cursor: 'pointer' }}
+          className="counter-btn"
         >
-          Contador: {count}
+          Likes recibidos: {count} ❤️
         </button>
       </section>
 
-      <hr />
-
-      <nav>
-        <h3>Navegación de Rutas:</h3>
-        <ul style={{ listStyle: 'none', padding: 0 }}>
-          <li style={{ margin: '10px 0' }}>
-            <Link to="/isaac" style={{ color: '#61dafb', textDecoration: 'none', fontWeight: 'bold' }}>
-              👉 Ir a Perfil de Isaac
-            </Link>
-          </li>
-          <li style={{ margin: '10px 0' }}>
-            <Link to="/mateo" style={{ color: '#61dafb', textDecoration: 'none', fontWeight: 'bold' }}>
-              👉 Ir a Perfil de Mateo
-            </Link>
-          </li>
-          <li style={{ margin: '10px 0' }}>
-            <Link to="/agujin" style={{ color: '#61dafb', textDecoration: 'none', fontWeight: 'bold' }}>
-              👉 Ir a Perfil de Agujin
-            </Link>
-          </li>
-        </ul>
-      </nav>
     </div>
   );
 }

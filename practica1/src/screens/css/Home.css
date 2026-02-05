@@ -1,0 +1,136 @@
+/* --- Home.css --- */
+
+/* Reset rápido específico para este componente */
+.home-container {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #121212 0%, #1e2024 100%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  padding: 40px 20px;
+}
+
+/* Título principal con animación */
+.main-header {
+  text-align: center;
+  margin-bottom: 50px;
+  animation: slideDown 1s ease-out;
+}
+
+.main-header h1 {
+  font-size: 3.5rem;
+  background: -webkit-linear-gradient(45deg, #61dafb, #d84bf7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #a0a0a0;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+/* Grilla de Selección de Equipo */
+.team-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 60px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Tarjetas de los perfiles */
+.profile-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 30px;
+  width: 250px;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto Hover en las tarjetas */
+.profile-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  border-color: #61dafb;
+}
+
+.avatar-placeholder {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.profile-role {
+  font-size: 0.9rem;
+  color: #61dafb;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Sección Interactiva (Contador) */
+.interactive-zone {
+  background: #1a1a1a;
+  padding: 30px 50px;
+  border-radius: 50px;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+  text-align: center;
+  animation: fadeIn 2s ease-in;
+  border: 1px solid #333;
+}
+
+.counter-btn {
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  border: none;
+  padding: 15px 40px;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 5px 15px rgba(255, 75, 43, 0.4);
+  margin-top: 15px;
+}
+
+.counter-btn:active {
+  transform: scale(0.95);
+}
+
+.counter-btn:hover {
+  box-shadow: 0 8px 25px rgba(255, 75, 43, 0.6);
+}
+
+/* Animaciones */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
