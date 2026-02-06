@@ -4,10 +4,8 @@ import "./css/Isaac.css";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
-// ID de la película (Interstellar)
-const MOVIE_ID = "157336"; 
 
-// 👇 IMPORTANTE: PEGA TU TOKEN AQUÍ DENTRO DE LAS COMILLAS
+const MOVIE_ID = "157336"; 
 const TMDB_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZDIwMjAyNGIyMTA0Yzc5NmJlMjJkZTU1OTJiMTkzNyIsIm5iZiI6MTc3MDA3OTE4OC4xNjIsInN1YiI6IjY5ODE0M2Q0ZjEzZTU3NmM4MDQxOGZhNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TGFd2-EaVUf2MKRmqmNEBI9_vURiac-XP0C1tyJSMq4";
 
 function Isaac() {
@@ -48,7 +46,7 @@ function Isaac() {
           method: 'GET',
           headers: {
             accept: 'application/json',
-            Authorization: `Bearer ${TMDB_TOKEN}` // Usa la constante de arriba
+            Authorization: `Bearer ${TMDB_TOKEN}` 
           }
         };
 
@@ -85,14 +83,14 @@ function Isaac() {
 
   // PANTALLA DE CARGA MEJORADA
   if (cargando) {
-    return <div className="portfolio-container"><h2>Cargando datos... ⏳</h2></div>;
+    return <div className="portfolio-container-isaac"><h2>Cargando datos... ⏳</h2></div>;
   }
 
   // Si después de cargar, perfil sigue siendo null (muy raro con el fix), mostramos error
   if (!perfil) return <div className="portfolio-container"><h2>Error al cargar el perfil ❌</h2></div>;
 
   return (
-    <div className="portfolio-container">
+    <div className="portfolio-container-isaac">
       <header className="hero">
         {perfil.Imagen && (
           <img src={perfil.Imagen} alt="Isaac" className="profile-pic" />

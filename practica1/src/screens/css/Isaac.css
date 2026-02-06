@@ -2,13 +2,13 @@
 /* =========================================
    1. VARIABLES Y RESET GENERAL
    ========================================= */
-:root {
+.fondo {
   --bg-color: #1a1a1a;
   --card-bg: #2a2a2a;
   --text-primary: #ffffff;
   --text-secondary: #b3b3b3;
-  --accent-color: #61dafb; /* Azul React */
-  --highlight-color: #ffcc00; /* Amarillo para resaltar */
+  --accent-color: #61dafb; /* Azul React /
+  --highlight-color: #ffcc00; / Amarillo para resaltar */
 }
 
 * {
@@ -35,7 +35,7 @@ html, body {
 /* =========================================
    2. CONTENEDOR PRINCIPAL (LAYOUT)
    ========================================= */
-.portfolio-container {
+.portfolio-container-isaac {
   background-color: var(--bg-color);
   color: var(--text-primary);
   min-height: 100vh;
