@@ -115,6 +115,63 @@ body.page-mateo {
   cursor: pointer;
 }
 
+/*API NASA*/
+.nasa-section {
+  margin-top: 40px;
+  padding: 25px;
+  background: #F7F3EE;
+  border: 1px solid #9d9ea0;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.nasa-title{
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.nasa-image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  margin: 15px 0;
+}
+
+.nasa-content{
+  background-color: #FFFFFF;
+  border: 1px solid #9d9ea0;;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: justify;
+}
+
+.nasa-image-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+
+  margin-bottom: 12px;
+}
+
+.nasa-description{
+  text-align: left;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.nasa-date {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+
 /* FOOTER */
 .nav-footer-mateo {
   margin-top: 40px;
@@ -133,3 +190,4 @@ body.page-mateo {
 .footer-links-mateo {
   margin-top: 12px;
 }
+

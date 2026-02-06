@@ -36,6 +36,8 @@ function Mateo() {
   
   const [perfil, setPerfil] = useState<any>(null);
 
+  const [nasaData, setNasaData] = useState<any>(null);
+
 
   useEffect(() => {
     document.body.classList.add("page-mateo");
@@ -64,11 +66,29 @@ function Mateo() {
     obtenerPerfil();
   }, []);
 
+    {/* UseEffect para consumir la API de la NASA*/}
+
+  useEffect(() => {
+    const obtenerFotoNASA = async () => {
+      try {
+        const response = await fetch(
+          "https://api.nasa.gov/planetary/apod?api_key=AXHqHSq8beZlKGUztdkU4Kyl8xVccvPGqM0JBfvX"
+        );
+        const data = await response.json();
+        console.log("NASA DATA:", data);
+        setNasaData(data);
+      } catch (error) {
+        console.error("Error al traer la foto de la NASA", error);
+      }
+    };
+
+    obtenerFotoNASA();
+  }, []);
+
   {/* Evitar que react se rompa mientras se carga Firebase */}
   if (!perfil) {
   return <p>Cargando perfil...</p>;
   }
-
 
   return (
     <div className="perfil">
@@ -84,7 +104,7 @@ function Mateo() {
 
       {/* CANCIÓN FAVORITA */}
       <div className="musica">
-        <h3>🎵 Mi canción favorita</h3>
+        <h3> 🟢Mi canción favorita : HECTOL - FEID 🟢</h3>
 
         <iframe 
           src="https://www.youtube.com/embed/NwKP92AoB04"
@@ -153,8 +173,37 @@ function Mateo() {
         </div>
       )}
 
+      
+      {/* FOTO DIARIA DE LA NASA */}
+      {nasaData && (
+        <div className="nasa-section">
+          <h3 className="nasa-title">Foto diaria de la NASA</h3>
+
+          {nasaData.media_type === "image" ? (
+            <img
+              src={nasaData.url}
+              alt={nasaData.title}
+              className="nasa-image"
+            />
+          ) : (
+            <iframe
+              src={nasaData.url}
+              title="NASA video"
+              allowFullScreen
+            ></iframe>
+          )}
+          <div className="nasa-content">
+            <h4 className="nasa-image-title">Título: {nasaData.title}</h4>
+            <p className="nasa-description">Descripción: </p>
+            <p> {nasaData.explanation}</p>
+            <p className="nasa-date">📅 {nasaData.date}</p>
+          </div>
+
+        </div>
+      )}
+
       <footer className="nav-footer-mateo">
-        <Link to="/" className="btn-back-mateo">← Volver al Home</Link>
+        <Link to="/home" className="btn-back-mateo">← Volver al Home</Link>
         <div className="footer-links-mateo">
           <span>Ver otros perfiles: </span>
           <Link to="/isaac">Isaac</Link> | <Link to="/agujin">Agujin</Link>

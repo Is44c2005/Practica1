@@ -219,60 +219,7 @@
     justify-content: space-between;
 }
 
-<<<<<<< HEAD
 .upload-btn-wrapper:hover .btn-upload {
   background-color: #2dd4bf;
   color: #0f172a;
 }
-=======
-#agujin-personal-page .user-card:hover {
-    transform: translateY(-5px);
-    border-color: #3b82f6;
-}
-
-#agujin-personal-page .user-info h3 {
-    margin: 0 0 5px 0;
-    font-size: 1.1rem;
-    color: white;
-}
-
-#agujin-personal-page .badge-role {
-    display: inline-block;
-    background: rgba(45, 212, 191, 0.2);
-    color: #2dd4bf;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    margin-bottom: 10px;
-}
-
-#agujin-personal-page .school-text,
-#agujin-personal-page .email-text {
-    font-size: 0.9rem;
-    color: #94a3b8;
-    margin: 2px 0;
-}
-
-#agujin-personal-page .btn-delete {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    opacity: 0.5;
-    transition: opacity 0.2s;
-}
-
-#agujin-personal-page .btn-delete:hover {
-    opacity: 1;
-}
-
-#agujin-personal-page .empty-msg {
-    text-align: center;
-    color: #64748b;
-    font-style: italic;
-    margin-top: 20px;
-}
->>>>>>> b6b2ef359a2176e697feb7d5e6e66563c09525f5

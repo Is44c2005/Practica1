@@ -192,7 +192,7 @@ function Isaac() {
       )}
 
       <footer className="nav-footer">
-        <Link to="/" className="btn-back">← Volver al Home</Link>
+        <Link to="/home" className="btn-back">← Volver al Home</Link>
         <div className="footer-links">
           <span>Ver otros perfiles: </span>
           <Link to="/mateo">Mateo</Link> | <Link to="/agujin">Agujin</Link>
