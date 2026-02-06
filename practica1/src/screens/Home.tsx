@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // Asegúrate de importar el CSS nuevo
 import "./css/Home.css"; 
 
 function Home() {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.body.classList.add("page-home");
+    return () => {
+      document.body.classList.remove("page-home");
+    };
+  }, []);
 
   return (
     <div className="home-container">

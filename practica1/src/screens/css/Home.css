@@ -1,6 +1,11 @@
 /* --- Home.css --- */
 
 /* Reset rápido específico para este componente */
+body.page-home {
+  background: linear-gradient(135deg, #121212 0%, #1e2024 100%);
+  margin: 0;
+}
+
 .home-container {
   min-height: 100vh;
   width: 100%;

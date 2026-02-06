@@ -15,6 +15,13 @@ function Isaac() {
   const [cargando, setCargando] = useState(true); // Nuevo estado para controlar la carga
 
   useEffect(() => {
+    document.body.classList.add("page-isaac");
+    return () => {
+      document.body.classList.remove("page-isaac");
+    };
+  }, []);
+
+  useEffect(() => {
     const cargarTodo = async () => {
       setCargando(true); // Empezamos a cargar
 

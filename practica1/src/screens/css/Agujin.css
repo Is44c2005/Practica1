@@ -1,4 +1,9 @@
-
+.root {
+  --primary-color: #2563eb;
+  --bg-color: #0f172a;
+  --text-color: #f8fafc;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+}
 
 .body {
   background-color: var(--bg-color);
