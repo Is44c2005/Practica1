@@ -16,10 +16,10 @@ const Login = () => {
 
         <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
           <div className="input-group">
-            <label>Correo Institucional / Personal</label>
+            <label>Correo </label>
             <input 
               type="email" 
-              placeholder="ejemplo@udla.edu.ec" 
+              placeholder="isacnegrito@gmail.com" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />

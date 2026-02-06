@@ -7,7 +7,7 @@ import Home from "./screens/Home";
 import Isaac from "./screens/Isaac"; 
 import Mateo from "./screens/Mateo";
 import Agujin from "./screens/Agujin";
-import Login from './screens/login';
+import Login from './screens/Login';
 import Signup from './screens/Signup';
 
 
