@@ -1,10 +1,27 @@
-import React, { useState } from 'react';
-import './css/Auth.css'; // Usaremos un CSS compartido para ambos
+import { useState } from 'react';
+import './css/Auth.css'; 
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+import { useNavigate, Link } from "react-router-dom";
+
+
 
 const Login = () => {
+
+  const navigate = useNavigate();
+
   // Estados solo para que los inputs funcionen visualmente
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    navigate("/home"); //Si el login es correcto va a la pantalla de home
+  } catch (error: any) {
+    alert("Correo o contraseña incorrectos");
+  }
+};
 
   return (
     <div className="auth-container">
@@ -16,10 +33,10 @@ const Login = () => {
 
         <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
           <div className="input-group">
-            <label>Correo Institucional / Personal</label>
+            <label>Correo </label>
             <input 
               type="email" 
-              placeholder="ejemplo@udla.edu.ec" 
+              placeholder="isacnegrito@gmail.com" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -39,13 +56,16 @@ const Login = () => {
             <a href="#" className="forgot-password">¿Olvidaste tu contraseña?</a>
           </div>
 
-          <button type="submit" className="btn-auth">
+          <button type="button" className="btn-auth" onClick={handleLogin}>
             Iniciar Sesión
           </button>
         </form>
 
         <div className="auth-footer">
-          <p>¿No tienes cuenta? <span className="link-highlight">Regístrate aquí</span></p>
+          <p>¿No tienes cuenta? <span className="link-highlight">
+            <Link to="/signup">Regístrate aquí</Link>
+            </span>
+          </p>
         </div>
       </div>
     </div>

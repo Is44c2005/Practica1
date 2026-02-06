@@ -34,9 +34,9 @@ function Home() {
 
         {/* Tarjeta 2: Mateo */}
         <Link to="/mateo" className="profile-card">
-          <span className="avatar-placeholder">🎨</span>
+          <span className="avatar-placeholder">🎨⚙️</span>
           <span className="profile-name">Mateo</span>
-          <span className="profile-role">UI/UX Designer</span>
+          <span className="profile-role">FullStack Developer</span>
         </Link>
 
         {/* Tarjeta 3: Agujin */}

@@ -15,12 +15,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>  
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Login />} />
         {/* Aquí usamos el componente con Mayúscula */}
         <Route path="/isaac" element={<Isaac />} /> 
         <Route path="/mateo" element={<Mateo />} /> 
         <Route path="/agujin" element={<Agujin />} />
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/home" element={<Home/>}/>
         <Route path="/signup" element={<Signup/>}/>
       </Routes>
     </BrowserRouter>
