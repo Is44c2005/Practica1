@@ -1,125 +1,120 @@
 import React, { useEffect, useState } from 'react';
-import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { 
+  doc, getDoc, updateDoc, collection, addDoc, 
+  onSnapshot, query, orderBy, deleteDoc 
+} from 'firebase/firestore';
 import { db, storage } from '../firebase'; 
 import './css/Agujin.css';
 
-const Agujin = () => {
-  const [imageUrl, setImageUrl] = useState<string>('');
-  const [loading, setLoading] = useState(true);
-  const [uploading, setUploading] = useState(false);
+function Agujin() {
 
-  // ID de tu documento en Firestore
-  const docId = "BGQGB3SafoTzzLZrry9U";
+  // --- Estados para Usuarios ---
+  const [showForm, setShowForm] = useState(false);
+  const [users, setUsers] = useState<any[]>([]); // Lista de usuarios
+  
+  const [newUser, setNewUser] = useState({
+    nombre: '',
+    universidad: '',
+    rol: '',
+    email: ''
+  });
 
-  useEffect(() => {
-    document.body.classList.add("page-agujin");
-    return () => {
-      document.body.classList.remove("page-agujin");
-    };
-  }, []);
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const docRef = doc(db, "Agujin", docId);
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          const data = docSnap.data();
-          setImageUrl(data["Foto de perfil"] || '');
-        }
-      } catch (error) {
-        console.error("Error al cargar:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProfile();
-  }, []);
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  // 3. Crear Usuario
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewUser({ ...newUser, [e.target.name]: e.target.value });
+  };
 
-    setUploading(true);
+  const handleCreateUser = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
-      // 1. Referencia en Firebase Storage
-      const storageRef = ref(storage, `perfiles/${file.name}`);
-      
-      // 2. Subir archivo
-      await uploadBytes(storageRef, file);
-      
-      // 3. Obtener URL de descarga
-      const downloadURL = await getDownloadURL(storageRef);
-      
-      // 4. Actualizar el campo en Firestore
-      const userDoc = doc(db, "Agujin", docId);
-      await updateDoc(userDoc, {
-        "Foto de perfil": downloadURL
+      await addDoc(collection(db, "Agujin"), {
+        ...newUser,
+        fechaCreacion: new Date() // Importante para ordenar
       });
+      setNewUser({ nombre: '', universidad: '', rol: '', email: '' }); 
+      setShowForm(false);
+    } catch (error) { alert("Error al guardar."); }
+  };
 
-      setImageUrl(downloadURL);
-      alert("¡Imagen actualizada con éxito!");
-    } catch (error) {
-      console.error("Error al subir imagen:", error);
-      alert("Error al subir. Revisa las reglas de Storage en Firebase.");
-    } finally {
-      setUploading(false);
+  // 4. Borrar Usuario (Extra: por si te equivocas)
+  const handleDeleteUser = async (id: string) => {
+    if (window.confirm("¿Seguro que quieres borrar este usuario?")) {
+      await deleteDoc(doc(db, "Agujin", id));
     }
   };
 
-  if (loading) return <div className="loading">Cargando portafolio...</div>;
 
   return (
-    <div className="portfolio-container">
-      <header className="hero-section">
-        <div className="glass-card">
-          <div className="profile-container">
-            {imageUrl ? (
-              <img src={imageUrl} alt="Alejandro Ibujes" className="profile-img" />
-            ) : (
-              <div className="profile-placeholder">Sin Foto</div>
-            )}
-            
-            {/* Input para subir imagen */}
-            <div className="upload-btn-wrapper">
-              <button className="btn-upload">{uploading ? 'Subiendo...' : 'Cambiar Foto'}</button>
-              <input type="file" onChange={handleImageUpload} accept="image/*" disabled={uploading} />
-            </div>
+    <div id="agujin-personal-page">
+      <div className="portfolio-container">
+        
+        {/* HERO */}
+        <header className="glass-card header-flex">
+          <div className="img-wrapper">
+  
+          </div>
+          <div className="text-section">
+            <h1>Hola, soy <span className="highlight">Flavio Alejandro Ibujes</span></h1>
+            <p className="role">Ingeniería de Software - UDLA</p>
+          </div>
+        </header>
+
+        {/* --- SECCIÓN ADMIN: AGREGAR Y MOSTRAR --- */}
+        <div className="admin-section">
+          <div className="admin-header">
+            <h2>Gestión de Usuarios</h2>
+            <button className="btn-primary" onClick={() => setShowForm(!showForm)}>
+              {showForm ? 'Cerrar Formulario' : '+ Nuevo Usuario'}
+            </button>
           </div>
 
-          [cite_start]<h1>Hola, soy <span className="highlight">Alejandro Ibujes</span></h1> [cite: 1]
-          [cite_start]<p className="subtitle">Estudiante de Ingeniería en Desarrollo de Software</p> [cite: 1]
-          [cite_start]<p className="university">Universidad de las Américas (UDLA)</p> [cite: 24]
+          {/* Formulario */}
+          {showForm && (
+            <form className="glass-card user-form" onSubmit={handleCreateUser}>
+              <div className="form-group">
+                <input type="text" name="nombre" placeholder="Nombre" value={newUser.nombre} onChange={handleInputChange} required />
+                <input type="text" name="universidad" placeholder="Universidad" value={newUser.universidad} onChange={handleInputChange} />
+              </div>
+              <div className="form-group">
+                <input type="text" name="rol" placeholder="Rol" value={newUser.rol} onChange={handleInputChange} />
+                <input type="email" name="email" placeholder="Email" value={newUser.email} onChange={handleInputChange} />
+              </div>
+              <button type="submit" className="btn-save">Guardar en Base de Datos</button>
+            </form>
+          )}
+
+          {/* LISTA DE USUARIOS (TABLA) */}
+          <div className="users-list">
+            {users.length === 0 ? (
+              <p className="empty-msg">No hay usuarios registrados aún.</p>
+            ) : (
+              <div className="grid-users">
+                {users.map((user) => (
+                  <div key={user.id} className="user-card">
+                    <div className="user-info">
+                      <h3>{user.nombre}</h3>
+                      <span className="badge-role">{user.rol || 'Sin rol'}</span>
+                      <p className="school-text">{user.universidad}</p>
+                      <p className="email-text">{user.email}</p>
+                    </div>
+                    <button className="btn-delete" onClick={() => handleDeleteUser(user.id)}>🗑️</button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
-      </header>
+        <iframe 
+        width="560" height="315" 
+        src="https://www.youtube.com/embed/LEhTlLnOVDU?si=MUgPt4oS3sR0j0C-" title="YouTube video player" 
+        frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+        picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
 
-      <main className="content">
-        <section className="section">
-          <h2>Sobre mí</h2>
-          [cite_start]<p>Líder de equipos multidisciplinares con ganas de aprender. [cite: 21]</p>
-          [cite_start]<p>Ayudante de Cátedra en la carrera de Ingeniería en Software UDLA. [cite: 29]</p>
-        </section>
-
-        <div className="grid-section">
-          <section className="card">
-            <h3>Certificaciones</h3>
-            <ul>
-              [cite_start]<li>AWS Academy Graduate - Cloud Foundations [cite: 35]</li>
-              [cite_start]<li>Cisco Certified Support Technician IT Support [cite: 33]</li>
-              [cite_start]<li>Python Essentials 1 y 2 [cite: 36]</li>
-            </ul>
-          </section>
-
-          <section className="card">
-            <h3>Investigación</h3>
-            [cite_start]<p><strong>Ponente en ETCM 2025:</strong> [cite: 37]</p>
-            [cite_start]<p>"Risk-Aware Fleet Management in Public Enterprises" [cite: 38]</p>
-          </section>
-        </div>
-      </main>
+      </div>
     </div>
   );
-};
+}
 
 export default Agujin;
