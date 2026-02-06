@@ -129,6 +129,82 @@ body.page-home {
   box-shadow: 0 8px 25px rgba(255, 75, 43, 0.6);
 }
 
+.widgets-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 40px;
+}
+
+/* Estilo unificado para las tarjetitas interactivas */
+.interactive-card {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  flex: 1;
+  min-width: 250px; /* Para que no se aplasten en celular */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.interactive-card h3 {
+  color: #61dafb;
+  margin-bottom: 10px;
+}
+
+/* Botones Genéricos */
+.action-btn {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: transform 0.2s;
+  width: 100%;
+}
+.action-btn:active { transform: scale(0.95); }
+
+/* Colores específicos de botones */
+.like-btn { background: #ff416c; color: white; }
+.excuse-btn { background: #61dafb; color: #1a1a1a; }
+.coffee-btn { background: #c08552; color: white; }
+
+/* Texto de la excusa */
+.excuse-text {
+  font-style: italic;
+  min-height: 50px; /* Para que no salte el diseño si el texto es largo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ddd;
+}
+
+/* Barra de Progreso (Café) */
+.progress-bar-container {
+  width: 100%;
+  height: 15px;
+  background-color: #333;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px 0;
+  border: 1px solid #555;
+}
+
+.progress-fill {
+  height: 100%;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
 /* Animaciones */
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-50px); }

@@ -1,88 +1,160 @@
-.root {
-  --primary-color: #2563eb;
-  --bg-color: #0f172a;
-  --text-color: #f8fafc;
-  --glass-bg: rgba(255, 255, 255, 0.05);
+/* CONTENEDOR RAIZ - PROTEGE OTRAS RUTAS */
+#agujin-personal-page {
+    min-height: 100vh;
+    background-color: #0f172a;
+    color: #f8fafc;
+    font-family: 'Inter', system-ui, sans-serif;
 }
 
-.body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: 'Inter', sans-serif;
-  margin: 0;
-}
-.profile-img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #2dd4bf;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 0 20px rgba(45, 212, 191, 0.3);
+#agujin-personal-page .portfolio-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
-.highlight {
-  background: linear-gradient(90deg, #3b82f6, #2dd4bf);
-  -webkit-background-clip: text;
-  background-clip: text; /* Compatibilidad estándar */
-  -webkit-text-fill-color: transparent;
-  color: transparent; 
-  font-weight: bold;
+/* HEADER Y GLASSMORPHISM */
+#agujin-personal-page .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-/* El resto de estilos de Glassmorphism se mantienen igual */
-.portfolio-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem;
+/* FOTO DE PERFIL */
+#agujin-personal-page .profile-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
 }
 
-.glass-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 3rem;
-  border-radius: 20px;
-  text-align: center;
-  margin-bottom: 3rem;
+#agujin-personal-page .profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #2dd4bf;
 }
 
-.highlight {
-  /* 1. Definición del fondo (degradado UDLA/Tech) */
-  background-image: linear-gradient(90deg, #2563eb, #2dd4bf);
-  
-  /* 2. Recorte del fondo al texto (Compatibilidad total) */
-  -webkit-background-clip: text; /* Para Chrome, Safari, Edge */
-  background-clip: text;         /* Propiedad estándar */
-  
-  /* 3. Hacer el texto transparente para revelar el fondo */
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  
-  /* 4. Respaldo (Fallback) */
-  display: inline-block; /* Asegura que el gradiente se aplique correctamente */
+#agujin-personal-page .upload-label {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: #2563eb;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-.grid-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+/* TEXTO DEGRADADO */
+#agujin-personal-page .highlight {
+    background: linear-gradient(90deg, #3b82f6, #2dd4bf);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 800;
 }
 
-.card {
-  background: var(--glass-bg);
-  padding: 1.5rem;
-  border-radius: 15px;
-  border-left: 4px solid var(--primary-color);
+/* GRID DE CONTENIDO */
+#agujin-personal-page .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-.tag {
-  background: #1e293b;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  margin: 0.3rem;
-  display: inline-block;
+#agujin-personal-page .info-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#agujin-personal-page .info-card.special {
+    grid-column: span 2;
+    border-left: 4px solid #2dd4bf;
+}
+
+#agujin-personal-page .tag {
+    background: #1e293b;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-right: 8px;
+}
+
+#agujin-personal-page ul {
+    list-style: none;
+    padding: 0;
+}
+
+#agujin-personal-page li::before {
+    content: "▹";
+    color: #2dd4bf;
+    margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+    #agujin-personal-page .content-grid {
+        grid-template-columns: 1fr;
+    }
+    #agujin-personal-page .info-card.special {
+        grid-column: span 1;
+    }
+}
+/* --- Botones y Formulario --- */
+
+#agujin-personal-page .admin-section {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+#agujin-personal-page .btn-primary {
+    background: linear-gradient(90deg, #3b82f6, #2dd4bf);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    color: #0f172a;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#agujin-personal-page .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(45, 212, 191, 0.3);
+}
+
+#agujin-personal-page .user-form {
+    margin-top: 20px;
+    text-align: left;
+    animation: fadeIn 0.3s ease-in;
+}
+
+#agujin-personal-page .form-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+#agujin-personal-page input {
+    width: 100%;
+    padding: 12px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    font-family: inherit;
 }
 
 .h2 {
@@ -90,75 +162,117 @@
   display: inline-block;
   padding-bottom: 5px;
 }
-.card-image {
-  width: 50px; /* Tamaño tipo icono */
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
-}
-.profile-img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%; /* Foto circular */
-  object-fit: cover;
-  border: 4px solid rgba(45, 212, 191, 0.5); /* Borde turquesa suave */
-  margin-bottom: 1.5rem;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+#agujin-personal-page .btn-save {
+    width: 100%;
+    background: #3b82f6;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  color: #2dd4bf;
-  font-family: 'Inter', sans-serif;
-}
-.profile-container {
-  position: relative;
-  display: inline-block;
-  margin-bottom: 20px;
+#agujin-personal-page .btn-save:hover {
+    background: #2563eb;
 }
 
-.profile-img {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #2dd4bf;
-  transition: filter 0.3s;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Ocultar el input feo y poner un botón encima */
-.upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  margin-top: 10px;
+/* Ajuste responsive para el formulario */
+@media (max-width: 600px) {
+    #agujin-personal-page .form-group {
+        grid-template-columns: 1fr;
+    }
+}
+/* --- Lista de Usuarios --- */
+
+#agujin-personal-page .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
 }
 
-.btn-upload {
-  border: 2px solid #2dd4bf;
-  color: #2dd4bf;
-  background-color: transparent;
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
+#agujin-personal-page .grid-users {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
 }
 
-.upload-btn-wrapper input[type=file] {
-  font-size: 100px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  cursor: pointer;
+#agujin-personal-page .user-card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    position: relative;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
+<<<<<<< HEAD
 .upload-btn-wrapper:hover .btn-upload {
   background-color: #2dd4bf;
   color: #0f172a;
 }
+=======
+#agujin-personal-page .user-card:hover {
+    transform: translateY(-5px);
+    border-color: #3b82f6;
+}
+
+#agujin-personal-page .user-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
+    color: white;
+}
+
+#agujin-personal-page .badge-role {
+    display: inline-block;
+    background: rgba(45, 212, 191, 0.2);
+    color: #2dd4bf;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+#agujin-personal-page .school-text,
+#agujin-personal-page .email-text {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin: 2px 0;
+}
+
+#agujin-personal-page .btn-delete {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+}
+
+#agujin-personal-page .btn-delete:hover {
+    opacity: 1;
+}
+
+#agujin-personal-page .empty-msg {
+    text-align: center;
+    color: #64748b;
+    font-style: italic;
+    margin-top: 20px;
+}
+>>>>>>> b6b2ef359a2176e697feb7d5e6e66563c09525f5
