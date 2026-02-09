@@ -71,8 +71,9 @@ function Mateo() {
   useEffect(() => {
     const obtenerFotoNASA = async () => {
       try {
+        const apiKey = import.meta.env.VITE_NASA_API_KEY
         const response = await fetch(
-          "https://api.nasa.gov/planetary/apod?api_key=AXHqHSq8beZlKGUztdkU4Kyl8xVccvPGqM0JBfvX"
+          `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`
         );
         const data = await response.json();
         console.log("NASA DATA:", data);
